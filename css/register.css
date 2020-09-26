@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    text-decoration: none;
+}
+form {
+    width: 400px;
+    margin: 160px auto;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 11px;
+    text-align: center;
+}
+form p{
+    padding: 15px 0;
+}
+form p label {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+}
+form h1 {
+    font-size: 25px;
+    padding-top: 15px;
+    padding-bottom: 7px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+}
+form a.btn {
+    display: inline-block;
+    width: 60px;
+    line-height: 28px;
+    border: 1px solid #009900;
+    border-radius: 13px;
+    color: #009900;
+    transition: all .15s;
+}
+form a.btn:hover {
+    background-color: #009900;
+    color: #fff;
+}

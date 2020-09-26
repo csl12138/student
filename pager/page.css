@@ -1,0 +1,51 @@
+.my-page-div * {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.my-page-div::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+.my-page-div>.page-size {
+    float: left;
+    line-height: 30px;
+    margin-right: 80px;
+}
+.my-page-div>.page-number {
+    float: left;
+}
+.my-page-div>.page-size>input {
+    width: 50px;
+    font-size: 16px;
+    text-align: center;
+    vertical-align: 1px;
+}
+.my-page-div>.page-number li,
+.my-page-div>.page-number span{
+    float: left;
+}
+.my-page-div>.page-number li {
+    padding: 0 10px;
+    height: 30px;
+    border: 1px solid #eee;
+    color: #000;
+    line-height: 30px;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+    margin-right: 4px;
+    border-radius: 4px;
+    transition: all .2s ease;
+}
+.my-page-div>.page-number li:hover {
+    background: #4E6EF2;
+    color: #fff;
+    font-weight: 400
+}
+.my-page-div>.page-number li.active {
+    background: #4E6EF2;
+    color: #fff;
+    font-weight: 400
+}

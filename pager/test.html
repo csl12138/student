@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./page.css">
+</head>
+<style>
+    .page-wrapper {
+        width: 800px;
+        height: 200px;
+        border: 1px solid black;
+        margin: 200px auto;
+    }
+</style>
+<body>
+    <div class="page-wrapper">
+
+    </div>
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="./page.js"></script>
+    <script>
+        $('.page-wrapper').pager({
+            pageSize: 5,
+            currentPage: 1,
+            allSize: 50
+        })
+    </script>
+</body>
+</html>
