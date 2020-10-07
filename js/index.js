@@ -157,8 +157,106 @@ function dealData(dataArray) {
     return data;
 }
 
+// 获取所有学生
+function getEchartsData () {
+    const sexData = {
+        "男": 0,
+        "女": 0
+    };
+    const areaData = {};
+    sendAjax("/api/student/findAll", undefined, function (res) {
+        let all = res.data;
+        all.forEach((person) => {
+            if (!areaData[person.address]) {
+                areaData[person.address] = 1;
+            } else {
+                areaData[person.address]++;
+            }
+            if (person.sex) {
+                // 女
+                sexData["女"]++;
+            } else {
+                sexData["男"]++;
+            }
+        })
+        renderAreaEcharts(areaData);
+        renderSexEcharts(sexData);
+    })
+}
+getEchartsData();
+
+// 渲染学生地域分布图
+function renderAreaEcharts (data) {
+
+    const myChart = echarts.init($("#student-info .area").get(0));
+    // 指定图表的配置项和数据
+    const option = {
+        title: {
+            text: '学生地域分布情况图'
+        },
+        tooltip: {},
+        legend: {
+            data:['城市']
+        },
+        xAxis: {
+            data: Object.keys(data)
+        },
+        yAxis: {},
+        series: [{
+            name: '城市',
+            type: 'bar',
+            data: Object.values(data)
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+}
+
+// 渲染学生性别比列
+function renderSexEcharts (data) {
+    const myChart = echarts.init($("#student-info .sex").get(0));
+    const option = {
+        title: {
+            text: '学生性别比列',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: Object.keys(data)
+        },
+        series: [
+            {
+                name: '性别',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '60%'],
+                data: [
+                    {value: data["男"], name: '男'},
+                    {value: data["女"], name: '女'}
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    myChart.setOption(option);
+}
+
+
+
 // 发送网络请求
-function sendAjax(url, data, callback) {
+function sendAjax(url, data={}, callback) {
     $.ajax({
         type: 'get',
         url: 'http://open.duyiedu.com' + url,

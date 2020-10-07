@@ -183,6 +183,26 @@ header .user:hover .logout {
 .right-content table tbody button.delete {
     background-color: #d9534f;
 }
+/* 学生信息可视化图表 */
+#student-info {
+    display: none;
+    height: calc(100vh - 70px);
+    background-color: rgba(255,255,255,.05);
+}
+#student-info .area {
+    display: inline-block;
+    width: 600px;
+    height: 400px;
+    margin-top: 70px;
+    margin-left: 40px;
+}
+#student-info .sex {
+    display: inline-block;
+    width: 600px;
+    height: 400px;
+    margin-top: 70px;
+    margin-left: 70px;
+}
 /* 新增学生 */
  #add-student {
     display: none;
